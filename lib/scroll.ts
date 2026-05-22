@@ -26,8 +26,7 @@ export const scrollToSection = (
   if (!el) return;
 
   const headerOffset = 72;
-  const top =
-    el.getBoundingClientRect().top + window.scrollY - headerOffset;
+  const top = el.getBoundingClientRect().top + window.scrollY - headerOffset;
 
   window.scrollTo({ top, behavior: "smooth" });
 

@@ -13,8 +13,7 @@ const buttonVariants = cva(
         secondary:
           "border border-border bg-card text-foreground hover:bg-foreground/[0.04]",
         ghost: "text-foreground hover:bg-foreground/[0.04]",
-        outline:
-          "border border-accent/50 text-accent hover:bg-accent/10",
+        outline: "border border-accent/50 text-accent hover:bg-accent/10",
       },
       size: {
         default: "h-11 px-6 py-2",
@@ -27,11 +26,12 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  },
 );
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
@@ -46,7 +46,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       />
     );
-  }
+  },
 );
 Button.displayName = "Button";
 

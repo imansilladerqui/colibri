@@ -9,12 +9,12 @@ export const Proyectos = () => {
   const reduced = useReducedMotion();
 
   return (
-    <section id="proyectos" className="py-24 md:py-32 bg-surface">
+    <section id="proyectos" className="bg-surface py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <SectionHeading label={PROYECTOS.label} title={PROYECTOS.heading} />
 
         <motion.p
-          className="-mt-8 mb-12 max-w-2xl text-lg text-muted md:mx-auto md:text-center"
+          className="text-muted -mt-8 mb-12 max-w-2xl text-lg md:mx-auto md:text-center"
           initial={reduced ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

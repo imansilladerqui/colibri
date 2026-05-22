@@ -23,26 +23,26 @@ export const ServiceCard = ({
     <motion.article
       className={cn(
         "gradient-border group relative flex flex-col items-center gap-4 overflow-hidden rounded-2xl p-6 text-center transition-[background-color,box-shadow,transform] duration-300",
-        "hover:bg-surface hover:shadow-[0_8px_28px_rgba(26,77,78,0.08)] hover:-translate-y-0.5",
+        "hover:bg-surface hover:-translate-y-0.5 hover:shadow-[0_8px_28px_rgba(26,77,78,0.08)]",
         "max-md:hover:translate-y-0 max-md:hover:shadow-none",
-        className
+        className,
       )}
       initial={reduced ? false : { opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.45 }}
     >
-      <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-background/80 transition-colors duration-300 group-hover:border-coral/35 group-hover:bg-coral/8">
+      <div className="border-border bg-background/80 group-hover:border-coral/35 group-hover:bg-coral/8 flex h-12 w-12 items-center justify-center rounded-xl border transition-colors duration-300">
         <Icon
-          className="h-6 w-6 text-teal transition-colors duration-300 group-hover:text-coral"
+          className="text-teal group-hover:text-coral h-6 w-6 transition-colors duration-300"
           strokeWidth={1.5}
         />
       </div>
       <div>
-        <h3 className="font-display text-lg font-semibold text-foreground md:text-xl">
+        <h3 className="font-display text-foreground text-lg font-semibold md:text-xl">
           {title}
         </h3>
-        <p className="mt-2 text-sm leading-relaxed text-muted">{description}</p>
+        <p className="text-muted mt-2 text-sm leading-relaxed">{description}</p>
       </div>
     </motion.article>
   );

@@ -48,7 +48,7 @@ export const ShowcaseCard = ({
       className={cn(
         "gradient-border group relative min-h-[200px] overflow-hidden rounded-2xl md:min-h-[220px]",
         span === "wide" && "md:col-span-2",
-        className
+        className,
       )}
       initial={reduced ? false : { opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -62,29 +62,29 @@ export const ShowcaseCard = ({
       />
       <div
         className={cn(
-          "absolute -right-8 -top-8 h-40 w-40 rounded-full blur-3xl",
-          styles.glow
+          "absolute -top-8 -right-8 h-40 w-40 rounded-full blur-3xl",
+          styles.glow,
         )}
         aria-hidden
       />
 
       <div className="relative z-10 flex h-full min-h-[200px] flex-col items-center justify-center gap-3 p-6 text-center md:min-h-[220px] md:gap-4 md:p-8">
         <Icon
-          className="h-10 w-10 shrink-0 text-foreground/80 transition-transform duration-300 group-hover:scale-110"
+          className="text-foreground/80 h-10 w-10 shrink-0 transition-transform duration-300 group-hover:scale-110"
           strokeWidth={1.25}
         />
         <div>
-          <h3 className="font-display text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+          <h3 className="font-display text-foreground text-2xl font-semibold tracking-tight md:text-3xl">
             {title}
           </h3>
-          <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-muted md:text-base">
+          <p className="text-muted mx-auto mt-2 max-w-sm text-sm leading-relaxed md:text-base">
             {tagline}
           </p>
         </div>
       </div>
 
       <div
-        className="absolute bottom-6 right-6 flex gap-1.5 opacity-40"
+        className="absolute right-6 bottom-6 flex gap-1.5 opacity-40"
         aria-hidden
       >
         {[0, 1, 2].map((i) => (

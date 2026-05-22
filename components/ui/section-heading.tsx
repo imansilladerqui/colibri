@@ -24,10 +24,10 @@ export const SectionHeading = ({
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.5 }}
     >
-      <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-sage">
+      <p className="text-sage mb-2 font-mono text-xs tracking-[0.2em] uppercase">
         {label}
       </p>
-      <h2 className="font-display text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
+      <h2 className="font-display text-foreground text-3xl font-semibold tracking-tight md:text-5xl">
         {title}
       </h2>
     </motion.div>

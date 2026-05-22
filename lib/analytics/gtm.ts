@@ -54,7 +54,9 @@ export const getPageContext = () => {
   };
 };
 
-export const trackPageView = (overrides?: Partial<ReturnType<typeof getPageContext>>) => {
+export const trackPageView = (
+  overrides?: Partial<ReturnType<typeof getPageContext>>,
+) => {
   pushGtmEvent({
     event: GTM_EVENTS.PAGE_VIEW,
     ...getPageContext(),

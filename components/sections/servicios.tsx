@@ -14,7 +14,7 @@ export const Servicios = () => {
         <SectionHeading label={SERVICIOS.label} title={SERVICIOS.heading} />
 
         <motion.p
-          className="-mt-8 mb-12 max-w-2xl text-lg text-muted"
+          className="text-muted -mt-8 mb-12 max-w-2xl text-lg"
           initial={reduced ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

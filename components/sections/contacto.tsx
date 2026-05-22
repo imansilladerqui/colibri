@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { motion, useReducedMotion } from "framer-motion";
 import { Loader2, Mail, MapPin } from "lucide-react";
@@ -32,13 +32,17 @@ const turnstileEnabled = Boolean(
 
 export const Contacto = () => {
   const reduced = useReducedMotion();
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">(
-    "idle",
-  );
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
-  const formStartedAt = useRef(Date.now());
+  const formStartedAt = useRef(0);
   const formStartTracked = useRef(false);
+
+  useLayoutEffect(() => {
+    formStartedAt.current = Date.now();
+  }, []);
 
   const {
     register,
@@ -47,7 +51,7 @@ export const Contacto = () => {
     formState: { errors },
   } = useForm<ContactFormValues>();
 
-  const onSubmit = async ({ company, ...data }: ContactFormValues) => {
+  const submitContactForm = async ({ company, ...data }: ContactFormValues) => {
     if (turnstileEnabled && !turnstileToken) {
       setStatus("error");
       setStatusMessage(CONTACTO.form.errorCaptcha);
@@ -88,16 +92,21 @@ export const Contacto = () => {
     setStatusMessage(messages[result.error]);
   };
 
+  const onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    void handleSubmit(submitContactForm)(event);
+  };
+
   return (
     <section
       id="contacto"
-      className="py-24 md:py-32 bg-surface border-t border-border"
+      className="bg-surface border-border border-t py-24 md:py-32"
     >
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <SectionHeading label={CONTACTO.label} title={CONTACTO.heading} />
 
         <motion.p
-          className="-mt-8 mb-12 max-w-2xl text-lg text-muted"
+          className="text-muted -mt-8 mb-12 max-w-2xl text-lg"
           initial={reduced ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -107,17 +116,17 @@ export const Contacto = () => {
         </motion.p>
 
         <div className="grid gap-12 lg:grid-cols-5">
-          <div className="lg:col-span-2 space-y-6">
-            <div className="gradient-border rounded-2xl p-6 space-y-6">
+          <div className="space-y-6 lg:col-span-2">
+            <div className="gradient-border space-y-6 rounded-2xl p-6">
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border bg-background/80">
-                  <Mail className="h-5 w-5 text-teal" />
+                <div className="border-border bg-background/80 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border">
+                  <Mail className="text-teal h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted">Email</p>
+                  <p className="text-muted text-sm">Email</p>
                   <a
                     href={`mailto:${SITE.email}`}
-                    className="font-medium text-foreground hover:text-accent transition-colors"
+                    className="text-foreground hover:text-accent font-medium transition-colors"
                     onClick={() =>
                       trackOutboundClick({
                         linkUrl: `mailto:${SITE.email}`,
@@ -131,12 +140,12 @@ export const Contacto = () => {
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border bg-background/80">
-                  <MapPin className="h-5 w-5 text-teal" />
+                <div className="border-border bg-background/80 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border">
+                  <MapPin className="text-teal h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted">Ubicación</p>
-                  <p className="font-medium text-foreground">{SITE.location}</p>
+                  <p className="text-muted text-sm">Ubicación</p>
+                  <p className="text-foreground font-medium">{SITE.location}</p>
                 </div>
               </div>
             </div>
@@ -144,21 +153,21 @@ export const Contacto = () => {
 
           <div className="lg:col-span-3">
             {status === "success" ? (
-              <div className="gradient-border rounded-2xl p-12 text-center min-h-[320px] flex flex-col items-center justify-center">
-                <p className="font-display text-2xl font-semibold text-foreground">
+              <div className="gradient-border flex min-h-[320px] flex-col items-center justify-center rounded-2xl p-12 text-center">
+                <p className="font-display text-foreground text-2xl font-semibold">
                   Mensaje enviado
                 </p>
-                <p className="mt-4 text-muted max-w-sm">{statusMessage}</p>
+                <p className="text-muted mt-4 max-w-sm">{statusMessage}</p>
               </div>
             ) : (
               <form
-                onSubmit={handleSubmit(onSubmit)}
+                onSubmit={onFormSubmit}
                 onFocusCapture={() => {
                   if (formStartTracked.current) return;
                   formStartTracked.current = true;
                   trackContactFormStart();
                 }}
-                className="gradient-border relative rounded-2xl p-8 space-y-6"
+                className="gradient-border relative space-y-6 rounded-2xl p-8"
                 noValidate
               >
                 <div className="space-y-2">
@@ -175,7 +184,7 @@ export const Contacto = () => {
                     })}
                   />
                   {errors.name && (
-                    <p className="text-xs text-accent">{errors.name.message}</p>
+                    <p className="text-accent text-xs">{errors.name.message}</p>
                   )}
                 </div>
 
@@ -197,7 +206,9 @@ export const Contacto = () => {
                     })}
                   />
                   {errors.email && (
-                    <p className="text-xs text-accent">{errors.email.message}</p>
+                    <p className="text-accent text-xs">
+                      {errors.email.message}
+                    </p>
                   )}
                 </div>
 
@@ -211,7 +222,9 @@ export const Contacto = () => {
                 />
 
                 <div className="space-y-2">
-                  <Label htmlFor="contact-message">{CONTACTO.form.message}</Label>
+                  <Label htmlFor="contact-message">
+                    {CONTACTO.form.message}
+                  </Label>
                   <Textarea
                     id="contact-message"
                     rows={5}
@@ -224,7 +237,7 @@ export const Contacto = () => {
                     })}
                   />
                   {errors.message && (
-                    <p className="text-xs text-accent">
+                    <p className="text-accent text-xs">
                       {errors.message.message}
                     </p>
                   )}
@@ -239,7 +252,7 @@ export const Contacto = () => {
                 )}
 
                 {statusMessage && status === "error" && (
-                  <p role="status" className="text-sm text-accent">
+                  <p role="status" className="text-accent text-sm">
                     {statusMessage}
                   </p>
                 )}

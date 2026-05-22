@@ -24,9 +24,9 @@ export const Hero = () => {
       className="relative min-h-screen overflow-hidden pt-24"
     >
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="mesh-blob left-1/4 top-1/4 h-96 w-96 bg-accent/20" />
-        <div className="mesh-blob right-1/4 top-1/3 h-80 w-80 bg-accent-secondary/20" />
-        <div className="mesh-blob bottom-1/4 left-1/2 h-72 w-72 -translate-x-1/2 bg-highlight/15" />
+        <div className="mesh-blob bg-accent/20 top-1/4 left-1/4 h-96 w-96" />
+        <div className="mesh-blob bg-accent-secondary/20 top-1/3 right-1/4 h-80 w-80" />
+        <div className="mesh-blob bg-highlight/15 bottom-1/4 left-1/2 h-72 w-72 -translate-x-1/2" />
       </div>
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100vh-6rem)] max-w-6xl flex-col items-center justify-center px-6 py-20 text-center">
@@ -35,22 +35,22 @@ export const Hero = () => {
         </motion.div>
 
         <motion.p
-          className="mb-4 font-mono text-xs uppercase tracking-[0.25em] text-sage"
+          className="text-sage mb-4 font-mono text-xs tracking-[0.25em] uppercase"
           {...fadeUp(0.1)}
         >
           {HERO.eyebrow}
         </motion.p>
 
         <motion.h1
-          className="font-display text-4xl font-semibold leading-[1.1] tracking-tight md:text-7xl lg:text-8xl"
+          className="font-display text-4xl leading-[1.1] font-semibold tracking-tight md:text-7xl lg:text-8xl"
           {...fadeUp(0.15)}
         >
-          <span className="block text-foreground">{HERO.headline}</span>
+          <span className="text-foreground block">{HERO.headline}</span>
           <span className="gradient-text block">{HERO.headlineAccent}</span>
         </motion.h1>
 
         <motion.p
-          className="mx-auto mt-6 max-w-xl text-lg text-muted md:text-xl"
+          className="text-muted mx-auto mt-6 max-w-xl text-lg md:text-xl"
           {...fadeUp(0.25)}
         >
           {HERO.tagline}
@@ -63,7 +63,7 @@ export const Hero = () => {
           <NavLink
             href="#proyectos"
             gtmLocation="hero"
-            className="inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-opacity hover:opacity-90"
+            className="bg-foreground text-background inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-opacity hover:opacity-90"
           >
             {HERO.ctaWork}
             <ArrowDown className="h-4 w-4" />
@@ -71,7 +71,7 @@ export const Hero = () => {
           <NavLink
             href="#contacto"
             gtmLocation="hero"
-            className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-accent/40 hover:bg-accent/5"
+            className="border-border text-foreground hover:border-accent/40 hover:bg-accent/5 inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-medium transition-colors"
           >
             <Mail className="h-4 w-4" />
             {HERO.ctaContact}

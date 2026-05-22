@@ -25,7 +25,7 @@ export const NavLink = ({
       const linkText =
         typeof children === "string"
           ? children
-          : e.currentTarget.textContent?.trim() ?? href;
+          : (e.currentTarget.textContent?.trim() ?? href);
 
       scrollToSection(
         href,

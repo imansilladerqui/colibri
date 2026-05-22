@@ -2,9 +2,12 @@
 
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { NAV, SITE } from "@/lib/constants";
-import { cn } from "@/lib/utils";
-import { trackCtaClick, trackLogoClick, trackMenuToggle } from "@/lib/analytics/gtm";
+import { NAV } from "@/lib/constants";
+import {
+  trackCtaClick,
+  trackLogoClick,
+  trackMenuToggle,
+} from "@/lib/analytics/gtm";
 import { scrollToSection } from "@/lib/scroll";
 import { Logo } from "@/components/ui/logo";
 import { NavLink } from "@/components/ui/nav-link";
@@ -31,13 +34,16 @@ export const Header = () => {
           <Logo className="h-12 md:h-14" />
         </button>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Principal">
+        <nav
+          className="hidden items-center gap-8 md:flex"
+          aria-label="Principal"
+        >
           {NAV.map((item) => (
             <NavLink
               key={item.id}
               href={`#${item.id}`}
               gtmLocation="header"
-              className="text-sm text-muted transition-colors hover:text-foreground"
+              className="text-muted hover:text-foreground text-sm transition-colors"
             >
               {item.label}
             </NavLink>
@@ -65,7 +71,7 @@ export const Header = () => {
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-border md:hidden"
+          className="border-border flex h-10 w-10 items-center justify-center rounded-lg border md:hidden"
           onClick={() => {
             const next = !open;
             trackMenuToggle(next);
@@ -80,7 +86,7 @@ export const Header = () => {
 
       {open && (
         <nav
-          className="border-t border-border px-6 py-4 md:hidden"
+          className="border-border border-t px-6 py-4 md:hidden"
           aria-label="Menú móvil"
         >
           <ul className="flex flex-col gap-4">
@@ -90,7 +96,7 @@ export const Header = () => {
                   href={`#${item.id}`}
                   gtmLocation="header_mobile"
                   onNavigate={() => setOpen(false)}
-                  className="block text-lg text-muted hover:text-foreground"
+                  className="text-muted hover:text-foreground block text-lg"
                 >
                   {item.label}
                 </NavLink>

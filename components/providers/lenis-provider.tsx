@@ -3,14 +3,10 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 
-export const LenisProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+export const LenisProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
     if (prefersReduced) return;
 

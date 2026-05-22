@@ -19,17 +19,17 @@ export const Estudio = () => {
           transition={{ duration: 0.5 }}
           className="w-full"
         >
-          <p className="text-lg leading-relaxed text-muted md:text-xl">
+          <p className="text-muted text-lg leading-relaxed md:text-xl">
             {ESTUDIO.summary}
           </p>
 
           <div className="mt-12 grid w-full grid-cols-1 gap-4 sm:grid-cols-3">
             {ESTUDIO.stats.map((stat) => (
               <div key={stat.id} className="gradient-border rounded-xl p-6">
-                <p className="font-display text-3xl font-semibold text-foreground">
+                <p className="font-display text-foreground text-3xl font-semibold">
                   {stat.value}
                 </p>
-                <p className="mt-2 text-xs uppercase tracking-wider text-muted">
+                <p className="text-muted mt-2 text-xs tracking-wider uppercase">
                   {stat.label}
                 </p>
               </div>

@@ -57,10 +57,7 @@ export const GtmTracker = () => {
           if (seenSections.current.has(sectionId)) continue;
 
           seenSections.current.add(sectionId);
-          trackSectionView(
-            sectionId,
-            SECTION_LABELS[sectionId] ?? sectionId,
-          );
+          trackSectionView(sectionId, SECTION_LABELS[sectionId] ?? sectionId);
         }
       },
       { rootMargin: "-20% 0px -55% 0px", threshold: 0 },
@@ -95,7 +92,9 @@ export const GtmTracker = () => {
           Object.entries(tracked.dataset)
             .filter(([key]) => key.startsWith("gtmParam"))
             .map(([key, value]) => [
-              key.replace(/^gtmParam/, "").replace(/^./, (c) => c.toLowerCase()),
+              key
+                .replace(/^gtmParam/, "")
+                .replace(/^./, (c) => c.toLowerCase()),
               value,
             ]),
         ),

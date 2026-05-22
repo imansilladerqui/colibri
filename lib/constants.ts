@@ -35,8 +35,7 @@ export const HERO = {
   eyebrow: "Estudio de productos digitales · Barcelona",
   headline: "Creamos productos",
   headlineAccent: "que escalan.",
-  tagline:
-    "Diseño y desarrollo para web, móvil y plataformas.",
+  tagline: "Diseño y desarrollo para web, móvil y plataformas.",
   ctaWork: "Ver proyectos",
   ctaContact: "Iniciar proyecto",
 } as const;
@@ -89,14 +88,16 @@ export const PROYECTOS = {
       accent: "sage" as WorkAccent,
       icon: ShoppingBag,
       title: "Ecommerce",
-      tagline: "Catálogos y experiencias de compra para marcas que venden online y offline.",
+      tagline:
+        "Catálogos y experiencias de compra para marcas que venden online y offline.",
     },
     {
       id: "entertainment",
       accent: "coral" as WorkAccent,
       icon: Sparkles,
       title: "Entretenimiento",
-      tagline: "Contenido, comunidades y experiencias para audiencias conectadas.",
+      tagline:
+        "Contenido, comunidades y experiencias para audiencias conectadas.",
     },
     {
       id: "construction",
@@ -110,14 +111,16 @@ export const PROYECTOS = {
       accent: "mustard" as WorkAccent,
       icon: Wallet,
       title: "Fintech",
-      tagline: "Productos financieros digitales claros para usuarios y tu negocio.",
+      tagline:
+        "Productos financieros digitales claros para usuarios y tu negocio.",
     },
     {
       id: "saas",
       accent: "coral" as WorkAccent,
       icon: LayoutDashboard,
       title: "SaaS y plataformas",
-      tagline: "Herramientas y plataformas B2B pensadas para crecer con el negocio.",
+      tagline:
+        "Herramientas y plataformas B2B pensadas para crecer con el negocio.",
     },
   ],
 } as const;
@@ -197,8 +200,7 @@ export const CONTACTO = {
     errorNotConfigured:
       "El email aún no está configurado. Prueba el enlace de correo.",
     errorInvalid: "Revisa el formulario e inténtalo de nuevo.",
-    errorCaptcha:
-      "Completa la verificación de seguridad e inténtalo de nuevo.",
+    errorCaptcha: "Completa la verificación de seguridad e inténtalo de nuevo.",
     errorTestingSender:
       "El remitente de prueba solo entrega al email de tu cuenta Resend. Configura CONTACT_INBOX_EMAIL en .env.local o verifica un dominio en Resend.",
     errorSend: "No se pudo enviar el mensaje. Inténtalo de nuevo.",
