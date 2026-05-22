@@ -262,10 +262,6 @@ export const Contacto = () => {
                   size="lg"
                   disabled={status === "sending"}
                   className="gap-2"
-                  data-gtm-event="cta_click"
-                  data-gtm-name="Enviar mensaje"
-                  data-gtm-location="contact"
-                  data-gtm-url="#contacto"
                 >
                   {status === "sending" && (
                     <Loader2 className="h-4 w-4 animate-spin" aria-hidden />

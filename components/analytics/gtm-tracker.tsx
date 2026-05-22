@@ -9,6 +9,7 @@ import {
   trackScrollDepth,
   trackSectionView,
   TRACKED_SECTION_IDS,
+  whenGtmReady,
 } from "@/lib/analytics/gtm";
 
 const SCROLL_THRESHOLDS = [25, 50, 75, 90] as const;
@@ -20,13 +21,12 @@ export const GtmTracker = () => {
   useEffect(() => {
     if (!isGtmEnabled()) return;
 
-    trackPageView();
+    let cancelled = false;
+    let sectionObserver: IntersectionObserver | null = null;
 
     const onHashChange = () => {
       trackPageView();
     };
-
-    window.addEventListener("hashchange", onHashChange);
 
     const onScroll = () => {
       const doc = document.documentElement;
@@ -43,30 +43,6 @@ export const GtmTracker = () => {
         }
       }
     };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-
-    const sectionObserver = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-
-          const sectionId = entry.target.id;
-          if (!sectionId || !TRACKED_SECTION_IDS.includes(sectionId)) continue;
-          if (seenSections.current.has(sectionId)) continue;
-
-          seenSections.current.add(sectionId);
-          trackSectionView(sectionId, SECTION_LABELS[sectionId] ?? sectionId);
-        }
-      },
-      { rootMargin: "-20% 0px -55% 0px", threshold: 0 },
-    );
-
-    for (const sectionId of TRACKED_SECTION_IDS) {
-      const el = document.getElementById(sectionId);
-      if (el) sectionObserver.observe(el);
-    }
 
     const onDocumentClick = (event: MouseEvent) => {
       const target = event.target;
@@ -101,13 +77,47 @@ export const GtmTracker = () => {
       });
     };
 
-    document.addEventListener("click", onDocumentClick);
+    const startTracking = () => {
+      if (cancelled) return;
+
+      trackPageView();
+
+      window.addEventListener("hashchange", onHashChange);
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      sectionObserver = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+
+            const sectionId = entry.target.id;
+            if (!sectionId || !TRACKED_SECTION_IDS.includes(sectionId)) continue;
+            if (seenSections.current.has(sectionId)) continue;
+
+            seenSections.current.add(sectionId);
+            trackSectionView(sectionId, SECTION_LABELS[sectionId] ?? sectionId);
+          }
+        },
+        { rootMargin: "-20% 0px -55% 0px", threshold: 0 },
+      );
+
+      for (const sectionId of TRACKED_SECTION_IDS) {
+        const el = document.getElementById(sectionId);
+        if (el) sectionObserver.observe(el);
+      }
+
+      document.addEventListener("click", onDocumentClick);
+    };
+
+    void whenGtmReady().then(startTracking);
 
     return () => {
+      cancelled = true;
       window.removeEventListener("hashchange", onHashChange);
       window.removeEventListener("scroll", onScroll);
       document.removeEventListener("click", onDocumentClick);
-      sectionObserver.disconnect();
+      sectionObserver?.disconnect();
     };
   }, []);
 

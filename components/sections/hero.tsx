@@ -3,8 +3,9 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDown, Mail } from "lucide-react";
 import { HERO } from "@/lib/constants";
+import { trackCtaClick } from "@/lib/analytics/gtm";
+import { scrollToSection } from "@/lib/scroll";
 import { Logo } from "@/components/ui/logo";
-import { NavLink } from "@/components/ui/nav-link";
 
 export const Hero = () => {
   const reduced = useReducedMotion();
@@ -60,22 +61,36 @@ export const Hero = () => {
           className="mt-10 flex flex-wrap justify-center gap-4"
           {...fadeUp(0.35)}
         >
-          <NavLink
-            href="#proyectos"
-            gtmLocation="hero"
+          <button
+            type="button"
+            onClick={() => {
+              trackCtaClick({
+                ctaName: HERO.ctaWork,
+                location: "hero",
+                destination: "#proyectos",
+              });
+              scrollToSection("#proyectos");
+            }}
             className="bg-foreground text-background inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-opacity hover:opacity-90"
           >
             {HERO.ctaWork}
             <ArrowDown className="h-4 w-4" />
-          </NavLink>
-          <NavLink
-            href="#contacto"
-            gtmLocation="hero"
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              trackCtaClick({
+                ctaName: HERO.ctaContact,
+                location: "hero",
+                destination: "#contacto",
+              });
+              scrollToSection("#contacto");
+            }}
             className="border-border text-foreground hover:border-accent/40 hover:bg-accent/5 inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-medium transition-colors"
           >
             <Mail className="h-4 w-4" />
             {HERO.ctaContact}
-          </NavLink>
+          </button>
         </motion.div>
       </div>
     </section>

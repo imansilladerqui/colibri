@@ -60,8 +60,8 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="es" className={`${dmSans.variable} ${lora.variable}`}>
-      <GoogleTagManagerRoot />
       <body className="noise-overlay font-sans antialiased">
+        <GoogleTagManagerRoot />
         <GtmTracker />
         <LenisProvider>
           <Header />

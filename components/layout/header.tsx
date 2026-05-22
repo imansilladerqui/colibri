@@ -23,10 +23,7 @@ export const Header = () => {
           type="button"
           onClick={() => {
             trackLogoClick("header");
-            scrollToSection("#inicio", {
-              linkText: "Logo",
-              location: "header",
-            });
+            scrollToSection("#inicio");
           }}
           className="inline-flex shrink-0"
           aria-label="Ir al inicio"
@@ -58,10 +55,7 @@ export const Header = () => {
                 location: "header",
                 destination: "#contacto",
               });
-              scrollToSection("#contacto", {
-                linkText: "Iniciar proyecto",
-                location: "header",
-              });
+              scrollToSection("#contacto");
             }}
             size="sm"
           >
@@ -111,10 +105,7 @@ export const Header = () => {
                     location: "header_mobile",
                     destination: "#contacto",
                   });
-                  scrollToSection("#contacto", {
-                    linkText: "Iniciar proyecto",
-                    location: "header_mobile",
-                  });
+                  scrollToSection("#contacto");
                   setOpen(false);
                 }}
               >

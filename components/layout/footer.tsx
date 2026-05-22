@@ -1,4 +1,8 @@
+"use client";
+
 import { NAV, SITE } from "@/lib/constants";
+import { trackLogoClick } from "@/lib/analytics/gtm";
+import { scrollToSection } from "@/lib/scroll";
 import { NavLink } from "@/components/ui/nav-link";
 import { Logo } from "@/components/ui/logo";
 
@@ -9,7 +13,17 @@ export const Footer = () => {
     <footer className="border-border border-t py-12">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-3">
-          <Logo className="h-12 md:h-14" />
+          <button
+            type="button"
+            onClick={() => {
+              trackLogoClick("footer");
+              scrollToSection("#inicio");
+            }}
+            className="inline-flex shrink-0"
+            aria-label="Ir al inicio"
+          >
+            <Logo className="h-12 md:h-14" />
+          </button>
           <div>
             <p className="font-display text-foreground font-semibold">
               {SITE.name}

@@ -4,6 +4,54 @@ export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID?.trim() ?? "";
 
 export const isGtmEnabled = () => Boolean(GTM_ID);
 
+const GTM_JS_EVENT = "gtm.js";
+const GTM_READY_TIMEOUT_MS = 5_000;
+
+const hasGtmContainerLoaded = (): boolean => {
+  if (typeof window === "undefined") {
+    return true;
+  }
+
+  const dataLayer = window.dataLayer;
+  if (!Array.isArray(dataLayer)) {
+    return false;
+  }
+
+  return dataLayer.some(
+    (entry) =>
+      typeof entry === "object" &&
+      entry !== null &&
+      "event" in entry &&
+      (entry as { event?: string }).event === GTM_JS_EVENT,
+  );
+};
+
+/** Waits until GTM has fired `gtm.js` so the Google tag can load before dataLayer events. */
+export const whenGtmReady = (): Promise<void> => {
+  if (typeof window === "undefined" || !isGtmEnabled()) {
+    return Promise.resolve();
+  }
+
+  if (hasGtmContainerLoaded()) {
+    return Promise.resolve();
+  }
+
+  return new Promise((resolve) => {
+    const startedAt = Date.now();
+
+    const check = () => {
+      if (hasGtmContainerLoaded() || Date.now() - startedAt >= GTM_READY_TIMEOUT_MS) {
+        resolve();
+        return;
+      }
+
+      window.setTimeout(check, 50);
+    };
+
+    check();
+  });
+};
+
 export const GTM_EVENTS = {
   PAGE_VIEW: "page_view",
   SECTION_VIEW: "section_view",

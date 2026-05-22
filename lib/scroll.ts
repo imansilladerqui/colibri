@@ -1,4 +1,8 @@
-import { trackNavigationClick, type GtmLocation } from "@/lib/analytics/gtm";
+import {
+  trackNavigationClick,
+  trackPageView,
+  type GtmLocation,
+} from "@/lib/analytics/gtm";
 
 export const scrollToSection = (
   hash: string,
@@ -16,9 +20,8 @@ export const scrollToSection = (
 
   if (!id) {
     window.scrollTo({ top: 0, behavior: "smooth" });
-    if (typeof window !== "undefined") {
-      window.history.replaceState(null, "", window.location.pathname);
-    }
+    window.history.replaceState(null, "", window.location.pathname);
+    trackPageView();
     return;
   }
 
@@ -30,7 +33,6 @@ export const scrollToSection = (
 
   window.scrollTo({ top, behavior: "smooth" });
 
-  if (typeof window !== "undefined") {
-    window.history.replaceState(null, "", `#${id}`);
-  }
+  window.history.replaceState(null, "", `#${id}`);
+  trackPageView();
 };
