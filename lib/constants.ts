@@ -202,7 +202,7 @@ export const CONTACTO = {
     errorInvalid: "Revisa el formulario e inténtalo de nuevo.",
     errorCaptcha: "Completa la verificación de seguridad e inténtalo de nuevo.",
     errorTestingSender:
-      "El remitente de prueba solo entrega al email de tu cuenta Resend. Configura CONTACT_INBOX_EMAIL en .env.local o verifica un dominio en Resend.",
+      "El remitente de prueba solo entrega al email de tu cuenta Resend. Usa un dominio verificado en Resend y CONTACT_FROM_EMAIL de producción.",
     errorSend: "No se pudo enviar el mensaje. Inténtalo de nuevo.",
   },
 } as const;

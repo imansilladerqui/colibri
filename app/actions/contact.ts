@@ -68,16 +68,14 @@ export const sendContactEmail = async (
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const to =
-    process.env.CONTACT_INBOX_EMAIL?.trim() ||
-    process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim();
+  const to = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim();
   const from = process.env.CONTACT_FROM_EMAIL?.trim();
 
   if (!apiKey || !to || !from) {
     if (process.env.NODE_ENV === "development") {
       const missing = [
         !apiKey && "RESEND_API_KEY",
-        !to && "CONTACT_INBOX_EMAIL or NEXT_PUBLIC_CONTACT_EMAIL",
+        !to && "NEXT_PUBLIC_CONTACT_EMAIL",
         !from && "CONTACT_FROM_EMAIL",
       ].filter(Boolean);
       console.error("[sendContactEmail] Missing env:", missing.join(", "));
