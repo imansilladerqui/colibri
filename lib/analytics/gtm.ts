@@ -40,7 +40,10 @@ export const whenGtmReady = (): Promise<void> => {
     const startedAt = Date.now();
 
     const check = () => {
-      if (hasGtmContainerLoaded() || Date.now() - startedAt >= GTM_READY_TIMEOUT_MS) {
+      if (
+        hasGtmContainerLoaded() ||
+        Date.now() - startedAt >= GTM_READY_TIMEOUT_MS
+      ) {
         resolve();
         return;
       }

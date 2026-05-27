@@ -92,7 +92,8 @@ export const GtmTracker = () => {
             if (!entry.isIntersecting) continue;
 
             const sectionId = entry.target.id;
-            if (!sectionId || !TRACKED_SECTION_IDS.includes(sectionId)) continue;
+            if (!sectionId || !TRACKED_SECTION_IDS.includes(sectionId))
+              continue;
             if (seenSections.current.has(sectionId)) continue;
 
             seenSections.current.add(sectionId);
