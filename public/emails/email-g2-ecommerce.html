@@ -1,190 +1,212 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <title>Estudio Colibrí</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Estudio Colibrí</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap");
 
-    * { margin:0; padding:0; box-sizing:border-box; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    body, .body-bg {
-      background-color: #ede8df;
-      font-family: 'DM Sans', Helvetica, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
+      body,
+      .body-bg {
+        background-color: #ede8df;
+        font-family: "DM Sans", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
 
-    .wrapper {
-      background-color: #ede8df;
-      padding: 0;
-      width: 100%;
-    }
+      .wrapper {
+        background-color: #ede8df;
+        padding: 0;
+        width: 100%;
+      }
 
-    .container { width: 100%; max-width: 600px;
-      min-height: 800px;
-      margin: 0 auto;
-      background-color: #ede8df;
-      padding: 60px 72px 48px;
-    }
-
-    .header {
-      text-align: center;
-      padding-bottom: 44px;
-    }
-    .logo {
-      width: 68px;
-      height: auto;
-      display: block;
-      margin: 0 auto 18px;
-    }
-    .tagline {
-      font-family: 'DM Sans', Helvetica, sans-serif;
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #c97a5a;
-    }
-
-    .hero {
-      text-align: center;
-      padding-bottom: 32px;
-    }
-    .week-label {
-      font-family: 'DM Sans', Helvetica, sans-serif;
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #5a8c6e;
-      margin-bottom: 18px;
-    }
-    .trigger {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 46px;
-      font-weight: 600;
-      line-height: 1.12;
-      color: #1a4035;
-      margin-bottom: 0;
-    }
-    .trigger em {
-      font-style: italic;
-      font-weight: 400;
-      color: #c97a5a;
-      display: block;
-    }
-
-    .body-text {
-      font-family: 'DM Sans', Helvetica, sans-serif;
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.8;
-      color: #4a4540;
-      text-align: center;
-      padding: 0 4px 40px;
-    }
-
-    .divider {
-      border: none;
-      border-top: 1px solid #cec8bf;
-      margin: 0 0 32px;
-    }
-
-    .cta-block {
-      text-align: center;
-      padding-bottom: 36px;
-    }
-    .cta-label {
-      font-family: 'DM Sans', Helvetica, sans-serif;
-      font-size: 13px;
-      font-weight: 300;
-      font-style: italic;
-      color: #4a4540;
-      margin-bottom: 12px;
-    }
-    .cta-link {
-      display: inline-block;
-      font-family: 'DM Sans', Helvetica, sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      color: #1a4035;
-      text-decoration: underline;
-      text-underline-offset: 4px;
-      letter-spacing: 0.04em;
-    }
-
-    .footer {
-      text-align: center;
-      padding-top: 4px;
-    }
-    .footer-text {
-      font-family: 'DM Sans', Helvetica, sans-serif;
-      font-size: 10.5px;
-      font-weight: 300;
-      color: #9e9890;
-      letter-spacing: 0.02em;
-      line-height: 1.9;
-    }
-    .footer-text a {
-      color: #9e9890;
-      text-decoration: underline;
-    }
-    @media only screen and (max-width: 620px) {
       .container {
-        width: 100% !important;
-        padding: 40px 24px 36px !important;
+        width: 100%;
+        max-width: 600px;
+        min-height: 800px;
+        margin: 0 auto;
+        background-color: #ede8df;
+        padding: 60px 72px 48px;
       }
-      .trigger {
-        font-size: 32px !important;
-        line-height: 1.15 !important;
-      }
-      .body-text {
-        font-size: 14px !important;
-        padding-bottom: 32px !important;
+
+      .header {
+        text-align: center;
+        padding-bottom: 44px;
       }
       .logo {
-        width: 56px !important;
+        width: 68px;
+        height: auto;
+        display: block;
+        margin: 0 auto 18px;
       }
-    }
-  </style>
-</head>
-<body>
-<div class="wrapper">
-  <div class="container">
+      .tagline {
+        font-family: "DM Sans", Helvetica, sans-serif;
+        font-size: 11px;
+        font-weight: 400;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #c97a5a;
+      }
 
-    <div class="header">
-      <img src="https://www.estudiocolibri.es/hummingbird.png" alt="Estudio Colibrí" class="logo" width="68"/>
-      <p class="tagline">Estudio de productos digitales &middot; Barcelona</p>
+      .hero {
+        text-align: center;
+        padding-bottom: 32px;
+      }
+      .week-label {
+        font-family: "DM Sans", Helvetica, sans-serif;
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #5a8c6e;
+        margin-bottom: 18px;
+      }
+      .trigger {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: 46px;
+        font-weight: 600;
+        line-height: 1.12;
+        color: #1a4035;
+        margin-bottom: 0;
+      }
+      .trigger em {
+        font-style: italic;
+        font-weight: 400;
+        color: #c97a5a;
+        display: block;
+      }
+
+      .body-text {
+        font-family: "DM Sans", Helvetica, sans-serif;
+        font-size: 15px;
+        font-weight: 300;
+        line-height: 1.8;
+        color: #4a4540;
+        text-align: center;
+        padding: 0 4px 40px;
+      }
+
+      .divider {
+        border: none;
+        border-top: 1px solid #cec8bf;
+        margin: 0 0 32px;
+      }
+
+      .cta-block {
+        text-align: center;
+        padding-bottom: 36px;
+      }
+      .cta-label {
+        font-family: "DM Sans", Helvetica, sans-serif;
+        font-size: 13px;
+        font-weight: 300;
+        font-style: italic;
+        color: #4a4540;
+        margin-bottom: 12px;
+      }
+      .cta-link {
+        display: inline-block;
+        font-family: "DM Sans", Helvetica, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        color: #1a4035;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        letter-spacing: 0.04em;
+      }
+
+      .footer {
+        text-align: center;
+        padding-top: 4px;
+      }
+      .footer-text {
+        font-family: "DM Sans", Helvetica, sans-serif;
+        font-size: 10.5px;
+        font-weight: 300;
+        color: #9e9890;
+        letter-spacing: 0.02em;
+        line-height: 1.9;
+      }
+      .footer-text a {
+        color: #9e9890;
+        text-decoration: underline;
+      }
+      @media only screen and (max-width: 620px) {
+        .container {
+          width: 100% !important;
+          padding: 40px 24px 36px !important;
+        }
+        .trigger {
+          font-size: 32px !important;
+          line-height: 1.15 !important;
+        }
+        .body-text {
+          font-size: 14px !important;
+          padding-bottom: 32px !important;
+        }
+        .logo {
+          width: 56px !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <div class="header">
+          <img
+            src="https://www.estudiocolibri.es/hummingbird.png"
+            alt="Estudio Colibrí"
+            class="logo"
+            width="68"
+          />
+          <p class="tagline">
+            Estudio de productos digitales &middot; Barcelona
+          </p>
+        </div>
+
+        <div class="hero">
+          <p class="week-label">Pregunta de la semana</p>
+          <h1 class="trigger">
+            ¿Tu tienda online vende<em>o solo muestra productos?</em>
+          </h1>
+        </div>
+
+        <p class="body-text">
+          Tener un ecommerce no es suficiente. Si la experiencia de compra no
+          transmite la misma calidad que tu producto, el cliente duda — y la
+          duda le cuesta. Una tienda que vende de verdad tiene una sola
+          dirección: de la primera foto al pago, sin fricciones, sin desvíos a
+          subdominios de terceros.
+        </p>
+
+        <hr class="divider" />
+
+        <div class="cta-block">
+          <p class="cta-label">
+            Tu producto merece una tienda que esté a su altura.
+          </p>
+          <a href="https://www.estudiocolibri.es/#contacto" class="cta-link"
+            >estudiocolibri.es</a
+          >
+        </div>
+
+        <hr class="divider" />
+
+        <div class="footer">
+          <p class="footer-text">
+            &copy; 2026 Estudio Colibrí. Todos los derechos reservados.<br />
+            <a href="{{unsubscribe}}">Darse de baja</a>
+          </p>
+        </div>
+      </div>
     </div>
-
-    <div class="hero">
-      <p class="week-label">Pregunta de la semana</p>
-      <h1 class="trigger">
-        ¿Tu tienda online vende<em>o solo muestra productos?</em>
-      </h1>
-    </div>
-
-    <p class="body-text">Tener un ecommerce no es suficiente. Si la experiencia de compra no transmite la misma calidad que tu producto, el cliente duda — y la duda le cuesta. Una tienda que vende de verdad tiene una sola dirección: de la primera foto al pago, sin fricciones, sin desvíos a subdominios de terceros.</p>
-
-    <hr class="divider"/>
-
-    <div class="cta-block">
-      <p class="cta-label">Tu producto merece una tienda que esté a su altura.</p>
-      <a href="https://www.estudiocolibri.es/#contacto" class="cta-link">estudiocolibri.es</a>
-    </div>
-
-    <hr class="divider"/>
-
-    <div class="footer">
-      <p class="footer-text">
-        &copy; 2026 Estudio Colibrí. Todos los derechos reservados.<br/>
-        <a href="{{unsubscribe}}">Darse de baja</a>
-      </p>
-    </div>
-
-  </div>
-</div>
-</body>
+  </body>
 </html>
